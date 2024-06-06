@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'registrasi_page.dart';
-import 'dashbord_page.dart'; // Make sure this is the correct name of the file.
+import 'dashbord_page.dart'; 
 
 void main() {
   runApp(const MyApp());
