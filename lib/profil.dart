@@ -15,7 +15,7 @@ class ProfilPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Theme.of(context).primaryColor,
+       backgroundColor: Color.fromARGB(255, 214, 138, 5),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -37,7 +37,7 @@ class ProfilPage extends StatelessWidget {
                   height: 30,
                   width: 30,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.blue,
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(
@@ -76,7 +76,7 @@ class ProfilPage extends StatelessWidget {
                   // Logika tambahan untuk mengubah foto profil
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).primaryColor,
+                  backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
                   minimumSize: Size(double.infinity, 50),
                 ),

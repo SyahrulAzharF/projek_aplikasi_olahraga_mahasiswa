@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart'; // Necessary for using TapGestureRecognizer
-import 'dashbord_page.dart'; // Please make sure the file name is spelled correctly in your project (e.g., 'dashboard_page.dart' if that is the correct name)
-import 'registrasi_page.dart'; // Make sure this file name is also correct according to your project
+import 'package:flutter/gestures.dart';
+import 'package:flutter/widgets.dart';
+import 'dashbord_page.dart';
+import 'registrasi_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -27,111 +28,146 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 251, 252, 252),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(height: 40),
-                Text(
-                  "Aplikasi Olahraga Mahasiswa",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    foreground: Paint()..shader = LinearGradient(
-                      colors: <Color>[
-                        Colors.blue, Colors.purple, Colors.red,
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ).createShader(Rect.fromLTWH(0.0, 0.0, 350.0, 30.0)), // Adjusted to better fit the text dimensions
-                  ),
-                ),
-                SizedBox(height: 40),
-                TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    prefixIcon: const Icon(Icons.email_outlined),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    if (!value.contains('@')) {
-                      return 'Please enter a valid email';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    prefixIcon: const Icon(Icons.lock_outline),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                  ),
-                  obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: _login,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 47, 197, 164),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  ),
-                  child: const Text('Login', style: TextStyle(color: Colors.white)),
-                ),
-                SizedBox(height: 20),
-                RichText(
-                  text: TextSpan(
-                    style: const TextStyle(color: Colors.black, fontSize: 16),
-                    children: <TextSpan>[
-                      const TextSpan(text: "Don't have an account? "),
-                      TextSpan(
-                        text: 'Register',
-                        style: TextStyle(color: Theme.of(context).primaryColor),
-                        recognizer: TapGestureRecognizer()..onTap = () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const RegistrationPage(title: 'Register')),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      backgroundColor: const Color.fromARGB(255, 251, 252, 252),
+      body: Stack(
+        children: [
+          // Background Image
+          Positioned.fill(
+            child: Image.asset(
+              'aset_media/gambar/login.jpg',
+              fit: BoxFit.cover,
             ),
           ),
-        ),
+          // Overlay to darken the image for better text contrast
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.5),
+            ),
+          ),
+          // Centered content
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  
+                  Text(
+                    "Aplikasi Olahraga Mahasiswa",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.yellow,
+                      shadows: [
+                        Shadow(
+                          offset: Offset(10.0, 10.0),
+                          blurRadius: 23.0,
+                          color: Colors.orange,
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    "Universitas Duta Bangsa Surakarta", 
+                     style: TextStyle(
+                      color:  Colors.yellow,
+                  ),
+                  ),
+                  const SizedBox(height: 60),
+                  const SizedBox(height: 40),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          controller: emailController,
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            labelStyle: TextStyle(color: Colors.white),
+                            prefixIcon: const Icon(Icons.email_outlined, color: Colors.white),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                          ),
+                          style: TextStyle(color: Colors.white),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            if (!value.contains('@')) {
+                              return 'Please enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 20),
+                        TextFormField(
+                          controller: passwordController,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            labelStyle: TextStyle(color: Colors.white),
+                            prefixIcon: const Icon(Icons.lock_outline, color: Colors.white),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                          ),
+                          style: TextStyle(color: Colors.white),
+                          obscureText: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 40),
+                        ElevatedButton(
+                          onPressed: _login,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 47, 197, 164),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                          ),
+                          child: const Text('Login', style: TextStyle(color: Colors.white)),
+                        ),
+                        const SizedBox(height: 20),
+                        RichText(
+                          text: TextSpan(
+                            style: const TextStyle(color: Colors.white, fontSize: 16),
+                            children: <TextSpan>[
+                              const TextSpan(text: "Don't have an account? "),
+                              TextSpan(
+                                text: 'Register',
+                                style: TextStyle(color: Color.fromARGB(255, 234, 228, 99)), // Ubah warna kuning di sini
+                                recognizer: TapGestureRecognizer()..onTap = () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const RegistrationPage(title: 'Register')),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

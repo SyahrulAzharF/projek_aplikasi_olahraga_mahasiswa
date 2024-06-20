@@ -57,6 +57,16 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+   - aset_media/gambar/
+   - aset_media/gambar/login.jpg
+   - aset_media/gambar/logo.jpg
+   - aset_media/gambar/registrasi.jpg
+   - aset_media/gambar/notifikasi.png
+   - aset_media/gambar/perlengkapan_2.jpg
+   - aset_media/gambar/pencapaian.webp
+   
+   
 
   # To add assets to your application, add an assets section, like this:
   # assets:

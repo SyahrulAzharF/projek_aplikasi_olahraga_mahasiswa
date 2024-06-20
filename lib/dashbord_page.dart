@@ -21,7 +21,7 @@ class DashboardPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: theme.primaryColor,
+         backgroundColor: Color.fromARGB(255, 214, 138, 5),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.account_circle, size: 30),
@@ -35,8 +35,8 @@ class DashboardPage extends StatelessWidget {
         children: <Widget>[
           buildFeatureTile(
             context: context,
-            title: 'Jadwal Olahraga',
-            subtitle: 'Senin, 09:00 - Latihan Futsal\nSelasa, 15:00 - Jogging',
+            title: 'Jadwal Olahraga',                  
+            subtitle: 'Make your sports schedule !\nLatihan Futsal, Basket, Jogging Bersama',
             iconData: Icons.sports_soccer,
             color: Colors.blue,
             onTap: () => navigateTo(context, const GabungAktivitasBuatJadwalPage(mode: 'jadwal')),
@@ -44,7 +44,7 @@ class DashboardPage extends StatelessWidget {
           buildFeatureTile(
             context: context,
             title: 'Aktivitas yang Tersedia',
-            subtitle: 'Basket, Workshop Esport, Catur',
+            subtitle: 'You can choose and join the available sports activities\nBasket, Workshop Esport, Catur',
             iconData: Icons.sports_basketball,
             color: Colors.orange,
             onTap: () => navigateTo(context, const GabungAktivitasBuatJadwalPage(mode: 'aktivitas')),
@@ -52,7 +52,7 @@ class DashboardPage extends StatelessWidget {
           buildFeatureTile(
             context: context,
             title: 'Acara Mendatang',
-            subtitle: '- Turnamen Bola Voli\n- Turnamen Estafet Renang Se-Surakarta',
+            subtitle: '- Turnamen Bola Voli\n- Turnamen Estafet Renang Universitas Se-Surakarta',
             iconData: Icons.event,
             color: Colors.green,
             onTap: () => navigateTo(context, const GabungAktivitasBuatJadwalPage(mode: 'acara')),
